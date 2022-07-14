@@ -27,8 +27,7 @@ class DataModel(
             userImage = "https://i.ibb.co/j8t3zGZ/img-user-2.png",
             userName = "Jang Marcelino",
             date = "February 14, 2019",
-            message =
-            "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
+            message = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
         )
     ),
     val action: ActionModel = ActionModel(

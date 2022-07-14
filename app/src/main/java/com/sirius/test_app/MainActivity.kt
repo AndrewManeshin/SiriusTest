@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.WindowManager
@@ -18,10 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+
+        setSupportActionBar(binding.toolbar.customToolbar)
+
         setContentView(binding.root)
 
         binding.gameImage.load("https://i.ibb.co/g3YVWD2/img-background.png")
@@ -52,7 +55,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun showBaseInfo(dataModel: DataModel) {
         with(binding) {
-            gameImage.load(dataModel.image)
+            gameImage.load(dataModel.image) {
+                listener(
+                    onStart = {
+                        binding.gameImage.visibility = View.INVISIBLE
+                        binding.gameImageProgressBar.visibility = View.VISIBLE
+                    },
+                    onSuccess = { _, _ ->
+                        binding.gameImage.visibility = View.VISIBLE
+                        binding.gameImageProgressBar.visibility = View.GONE
+                    },
+                    onError = { _, _ ->
+                        binding.gameImageProgressBar.visibility = View.GONE
+                        binding.gameImage.load(R.drawable.ic_baseline_error_outline_24)
+                    })
+            }
             logoImageView.load(dataModel.logo)
             nameTextView.text = dataModel.name
             ratingBar1.rating = dataModel.rating
@@ -66,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         dataModel.tags.forEach { tag ->
             val tagBinding = TagItemBinding.inflate(layoutInflater)
             tagBinding.tag.text = tag
-            binding.tagsLinearLayout.addView(tagBinding.root)
+            binding.tagsGridLayout.addView(tagBinding.root)
 
         }
     }

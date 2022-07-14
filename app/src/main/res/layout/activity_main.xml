@@ -29,9 +29,18 @@
                     android:id="@+id/gameImage"
                     android:layout_width="match_parent"
                     android:layout_height="312dp"
+                    android:contentDescription="TODO"
                     android:scaleType="centerCrop"
-                    tools:src="@tools:sample/backgrounds/scenic"
-                    android:contentDescription="TODO" />
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <ProgressBar
+                    android:id="@+id/gameImageProgressBar"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="@color/white"
+                    android:indeterminateTint="#F4D144"
+                    android:visibility="gone" />
 
 
                 <ImageView
@@ -71,11 +80,11 @@
 
                     <RatingBar
                         android:id="@+id/ratingBar1"
-                        android:theme="@style/AppRatingBar"
                         style="@android:style/Widget.Material.RatingBar.Small"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp5"
+                        android:theme="@style/AppRatingBar"
                         app:layout_constraintStart_toStartOf="@id/nameTextView"
                         app:layout_constraintTop_toBottomOf="@id/nameTextView"
                         tools:rating="4.9" />
@@ -94,15 +103,17 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </FrameLayout>
 
-            <LinearLayout
-                android:id="@+id/tagsLinearLayout"
+            <GridLayout
+                android:id="@+id/tagsGridLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header"
                 android:theme="@style/TagLinearLayout"
-                android:orientation="horizontal" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/dp24"
+                android:orientation="horizontal"
+                android:useDefaultMargins="true"
+                app:layout_constraintTop_toBottomOf="@id/header"
+                android:columnCount="3"/>
 
             <TextView
                 android:id="@+id/descriptionTextView"
@@ -112,10 +123,11 @@
                 android:lineHeight="19sp"
                 android:textColor="#B2EEF2FB"
                 android:textSize="@dimen/base_font"
-                app:layout_constraintEnd_toEndOf="@id/tagsLinearLayout"
-                app:layout_constraintStart_toStartOf="@+id/tagsLinearLayout"
-                app:layout_constraintTop_toBottomOf="@id/tagsLinearLayout"
-                tools:text="Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the Ancient, whilst defending their own." />
+                app:layout_constraintEnd_toEndOf="@id/tagsGridLayout"
+                app:layout_constraintStart_toStartOf="@+id/tagsGridLayout"
+                app:layout_constraintTop_toBottomOf="@id/tagsGridLayout"
+                tools:text="Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the Ancient, whilst defending their own."
+                tools:targetApi="p" />
 
             <TextView
                 android:id="@+id/reviewRatingsTextView"
@@ -123,8 +135,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp16"
                 android:text="@string/review_and_ratings"
-                android:textSize="@dimen/subtitle"
                 android:textColor="#EEF2FB"
+                android:textSize="@dimen/subtitle"
                 app:layout_constraintStart_toStartOf="@id/descriptionTextView"
                 app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
 
@@ -142,12 +154,12 @@
 
             <RatingBar
                 android:id="@+id/ratingBar2"
-                android:theme="@style/AppRatingBar"
                 style="@android:style/Widget.Material.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp16"
                 android:layout_marginTop="@dimen/dp12"
+                android:theme="@style/AppRatingBar"
                 app:layout_constraintStart_toEndOf="@id/ratingTextView"
                 app:layout_constraintTop_toTopOf="@id/ratingTextView"
 
@@ -181,8 +193,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp12"
                 android:minHeight="232dp"
-                android:paddingHorizontal="24dp"
                 android:orientation="vertical"
+                android:paddingHorizontal="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lineView" />
