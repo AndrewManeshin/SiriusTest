@@ -1,11 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="wrap_content"
+    android:background="#050B18">
 
-    <!-- Место для верстки -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
+
+            <FrameLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="340dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/gameImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="312dp"
+                    android:scaleType="centerCrop"
+                    tools:src="@tools:sample/backgrounds/scenic"
+                    android:contentDescription="TODO" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/ic_rounded_corner_background"
+                    android:contentDescription="TODO" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="@dimen/dp24">
+
+                    <ImageView
+                        android:id="@+id/logoImageView"
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription,MissingConstraints"
+                        tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/nameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/title"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/logoImageView"
+                        app:layout_constraintStart_toEndOf="@id/logoImageView"
+                        app:layout_constraintTop_toTopOf="@id/logoImageView"
+                        tools:text="DoTA 2" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar1"
+                        android:theme="@style/AppRatingBar"
+                        style="@android:style/Widget.Material.RatingBar.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp5"
+                        app:layout_constraintStart_toStartOf="@id/nameTextView"
+                        app:layout_constraintTop_toBottomOf="@id/nameTextView"
+                        tools:rating="4.9" />
+
+                    <TextView
+                        android:id="@+id/gradeCntTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp12"
+                        android:textColor="#45454D"
+                        app:layout_constraintBottom_toBottomOf="@id/ratingBar1"
+                        app:layout_constraintStart_toEndOf="@id/ratingBar1"
+                        app:layout_constraintTop_toTopOf="@id/ratingBar1"
+                        tools:text="70M" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/tagsLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header"
+                android:theme="@style/TagLinearLayout"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/descriptionTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp24"
+                android:lineHeight="19sp"
+                android:textColor="#B2EEF2FB"
+                android:textSize="@dimen/base_font"
+                app:layout_constraintEnd_toEndOf="@id/tagsLinearLayout"
+                app:layout_constraintStart_toStartOf="@+id/tagsLinearLayout"
+                app:layout_constraintTop_toBottomOf="@id/tagsLinearLayout"
+                tools:text="Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the Ancient, whilst defending their own." />
+
+            <TextView
+                android:id="@+id/reviewRatingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp16"
+                android:text="@string/review_and_ratings"
+                android:textSize="@dimen/subtitle"
+                android:textColor="#EEF2FB"
+                app:layout_constraintStart_toStartOf="@id/descriptionTextView"
+                app:layout_constraintTop_toBottomOf="@id/descriptionTextView" />
+
+            <TextView
+                android:id="@+id/ratingTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp12"
+                android:textColor="@color/white"
+                android:textSize="@dimen/rating_font"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/reviewRatingsTextView"
+                app:layout_constraintTop_toBottomOf="@id/reviewRatingsTextView"
+                tools:text="4.9" />
+
+            <RatingBar
+                android:id="@+id/ratingBar2"
+                android:theme="@style/AppRatingBar"
+                style="@android:style/Widget.Material.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp16"
+                android:layout_marginTop="@dimen/dp12"
+                app:layout_constraintStart_toEndOf="@id/ratingTextView"
+                app:layout_constraintTop_toTopOf="@id/ratingTextView"
+
+                tools:rating="5" />
+
+            <TextView
+                android:id="@+id/gradeCntReviewsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp8"
+                android:textColor="#A8ADB7"
+
+                app:layout_constraintStart_toStartOf="@+id/ratingBar2"
+                app:layout_constraintTop_toBottomOf="@+id/ratingBar2"
+                tools:text="70M Reviews" />
+
+            <View
+                android:id="@+id/lineView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/dp36"
+                android:layout_marginTop="@dimen/dp8"
+                android:background="#1A1F29"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingTextView" />
+
+            <LinearLayout
+                android:id="@+id/reviewsLinearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp12"
+                android:minHeight="232dp"
+                android:paddingHorizontal="24dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lineView" />
+
+            <Button
+                android:id="@+id/installButton"
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="@dimen/dp24"
+                android:layout_marginTop="@dimen/dp12"
+                android:layout_marginBottom="@dimen/dp36"
+                android:background="@drawable/ic_install_button_background"
+                android:text="@string/install_button"
+                android:textAllCaps="false"
+                android:textColor="#050B18"
+                android:textSize="@dimen/title"
+                app:cornerRadius="@dimen/dp12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/reviewsLinearLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="126dp" />
+
+</FrameLayout>
